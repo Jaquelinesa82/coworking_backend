@@ -33,6 +33,26 @@ class ListUser(APIView):
         return Response(serializer.data, status=status.HTTP_200_OK)
 
 
-##Criar def update_user 
-# teste a def test_update_user
-# teste api no postman
+class UpdateUser(APIView):
+    def put(self, request, pk):
+        try:
+            user = CustomUser.objects.get(pk=pk)
+        except CustomUser.DoesNotExist:
+            return Response({'detail': 'User not found'}, status=status.HTTP_404_NOT_FOUND)
+        
+        serializer = CustomUserSerializer(user, data=request.data, partial=True)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data, status=status.HTTP_200_OK)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+    
+    
+class DeleteUser(APIView):
+    def delete(self, request, pk):
+        try:
+            user = CustomUser.objects.get(pk=pk)
+        except CustomUser.DoesNotExist:
+            return Response({'detail': 'User not found'}, status=status.HTTP_404_NOT_FOUND)
+
+        user.delete()
+        return Response({'detail': 'User deleted successfully'}, status=status.HTTP_204_NO_CONTENT)
