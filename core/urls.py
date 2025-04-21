@@ -23,6 +23,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('auth_app/', include('auth_app.urls')), # Endpoint de autenticação
     path('api/rooms/', include('rooms.urls')), # Endpoint de salas
+    path('api/participant/', include('participant.urls')),
 ]
 
 # Apenas em ambiente de desenvolvimento (DEBUG = True)

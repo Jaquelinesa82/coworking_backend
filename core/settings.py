@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     # seus apps
     'auth_app',
     'rooms',
+    'participant',
     'rest_framework',
 ]
 
