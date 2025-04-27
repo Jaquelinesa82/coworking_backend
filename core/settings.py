@@ -51,6 +51,7 @@ INSTALLED_APPS = [
     # ==
     'rest_framework',
     'corsheaders',
+    'rest_framework_simplejwt',
 ]
 
 
@@ -65,6 +66,10 @@ MIDDLEWARE = [
     # ==
     'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
+]
+
+CORS_ALLOWED_ORIGINS = [
+    "http://localhost:4200",
 ]
 
 ROOT_URLCONF = 'core.urls'
@@ -155,10 +160,6 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 # Django REST framework settings
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': [
-        'rest_framework.authentication.SessionAuthentication',
-        'rest_framework.authentication.BasicAuthentication',
-    ],
-    'DEFAULT_PERMISSION_CLASSES': [
-        'rest_framework.permissions.AllowAny',
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
     ],
 }
