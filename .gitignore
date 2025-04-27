@@ -2,6 +2,7 @@
 __pycache__/
 *.py[cod]
 *$py.class
+*.sqlite3
 
 # C extensions
 *.so
@@ -55,6 +56,12 @@ coverage.xml
 *.mo
 *.pot
 
+# Django
+*.log
+staticfiles/
+local_settings.py
+db.sqlite3
+
 # Django stuff:
 *.log
 local_settings.py
@@ -64,6 +71,11 @@ db.sqlite3-journal
 # Flask stuff:
 instance/
 .webassets-cache
+
+# Frontend (ex: Angular, React)
+frontend/node_modules/
+frontend/dist/
+frontend/build/
 
 # Scrapy stuff:
 .scrapy
@@ -134,3 +146,7 @@ mediafiles/
 
 #
 .idea
+
+# Sistema operacional
+.DS_Store
+Thumbs.db
