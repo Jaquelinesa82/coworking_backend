@@ -5,6 +5,4 @@ from participant.models import Participant
 class ParticipantSerializer(serializers.ModelSerializer):
     class Meta:
         model = Participant
-        fields = [
-            'id', 'user', 'room', 'role', 'status'
-        ]
+        fields = ['id', 'user', 'room', 'role', 'status']

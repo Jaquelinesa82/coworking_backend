@@ -38,7 +38,6 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    
     # seus apps
     'auth_app',
     'rooms',
@@ -76,9 +75,7 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'core.wsgi.application'
 
-AUTHENTICATION_BACKENDS = (
-    'django.contrib.auth.backends.ModelBackend',  # O backend padrão de autenticação
-)
+AUTHENTICATION_BACKENDS = ('django.contrib.auth.backends.ModelBackend',)  # O backend padrão de autenticação
 
 # Database
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases

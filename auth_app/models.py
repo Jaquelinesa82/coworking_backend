@@ -31,11 +31,11 @@ class CustomUser(AbstractBaseUser, PermissionsMixin):
     avatar = models.ImageField(upload_to='avatars/', blank=True, null=True)
     bio = models.TextField(max_length=500, blank=True, null=True)
     status = models.CharField(
-        max_length=20,
-        choices=[('online', 'Online'), ('offline', 'Offline'), ('away', 'Away')], 
-        default='offline')
+        max_length=20, choices=[('online', 'Online'), ('offline', 'Offline'), ('away', 'Away')], default='offline'
+    )
     current_room = models.ForeignKey(
-        'rooms.Room', on_delete=models.SET_NULL, null=True, blank=True)  # Sala onde o usuário está
+        'rooms.Room', on_delete=models.SET_NULL, null=True, blank=True
+    )  # Sala onde o usuário está
     points = models.IntegerField(default=0)  # Pontos ou recompensas no Metaverso
     created_at = models.DateTimeField(default=timezone.now, verbose_name='Criado em')
     updated_at = models.DateTimeField(auto_now=True, verbose_name='Atualizado em')
@@ -50,12 +50,12 @@ class CustomUser(AbstractBaseUser, PermissionsMixin):
     class Meta:
         verbose_name = _('Usuário')
         verbose_name_plural = _('Usuários')
-        
+
     def get_username(self):
         return self.email.split('@')[0]
 
     def email_user(self, subject, message, from_email=None):
         send_mail(subject, message, from_email, [self.email])
-    
+
     def __str__(self):
         return self.first_name

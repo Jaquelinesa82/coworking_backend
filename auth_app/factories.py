@@ -2,6 +2,7 @@ import factory
 from faker import Faker
 from auth_app.models import CustomUser
 import uuid
+
 fake = Faker()
 
 

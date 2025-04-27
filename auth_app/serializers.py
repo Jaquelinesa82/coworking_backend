@@ -7,24 +7,22 @@ class CustomUserSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = CustomUser
-        fields = [
-            'id', 'email', 'password', 'first_name', 'last_name'
-        ]
-        
+        fields = ['id', 'email', 'password', 'first_name', 'last_name']
+
     def validate_email(self, value):
         """Evita erro ao atualizar o próprio e-mail"""
         user = self.instance
         if CustomUser.objects.filter(email=value).exclude(pk=user.pk if user else None).exists():
             raise serializers.ValidationError("Este e-mail já está em uso.")
         return value
-    
+
     def create(self, validated_data):
         password = validated_data.pop('password')
         user = CustomUser(**validated_data)
         user.set_password(password)
         user.save()
         return user
-    
+
     def update(self, instance, validated_data):
         password = validated_data.pop('password', None)
         for attr, value in validated_data.items():
