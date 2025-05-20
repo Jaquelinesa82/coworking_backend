@@ -4,6 +4,8 @@ from rest_framework import status
 from django.contrib.auth import authenticate
 from .serializers import CustomUserSerializer
 from auth_app.models import CustomUser
+from rest_framework_simplejwt.views import TokenObtainPairView
+from .serializers import CustomTokenObtainPairSerializer
 
 
 class RegisterUser(APIView):
@@ -56,3 +58,7 @@ class DeleteUser(APIView):
 
         user.delete()
         return Response({'detail': 'User deleted successfully'}, status=status.HTTP_204_NO_CONTENT)
+
+
+class CustomTokenObtainPairView(TokenObtainPairView):
+    serializer_class = CustomTokenObtainPairSerializer
